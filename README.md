@@ -5,10 +5,8 @@ This repository designed to accelerate and simplify everyday DevOps and cloud in
 ## Features
 
 - Automated repository scaffolding with Terraform templates
-- Multi-environment infrastructure provisioning (dev, staging, prod)
-- Reusable modules for cloud providers (AWS, Azure, GCP)
-- Integrated testing and validation workflows
-- Secure secrets management using remote state and environment variables
+- Multi-environment infrastructure provisioning
+
 
 ## Getting Started
 
