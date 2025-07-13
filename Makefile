@@ -1,4 +1,4 @@
-COMMIT_MSG ?= "refactored repository creation files"
+COMMIT_MSG ?= "Add Terraform template and GitHub Actions workflow"
 
 add:
 	   git add .
