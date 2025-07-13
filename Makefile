@@ -1,4 +1,4 @@
-COMMIT_MSG ?= "refactored project description, added feature folders"
+COMMIT_MSG ?= "added repository creation folders and files"
 
 add:
 	   git add .
