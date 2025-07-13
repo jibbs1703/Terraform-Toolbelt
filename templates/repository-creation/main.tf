@@ -1,13 +1,13 @@
 resource "github_repository" "repo" {
-  name        = var.repo_name
-  description = var.repo_description
-  visibility  = var.visibility
-  auto_init          = true
-  gitignore_template = "Python"
-  has_issues    = true
-  has_projects  = false
-  has_wiki      = false
-  has_downloads = false
+  name                 = var.repo_name
+  description          = var.repo_description
+  visibility           = var.visibility
+  auto_init            = true
+  gitignore_template   = "Python"
+  has_issues           = true
+  has_projects         = false
+  has_wiki             = false
+  has_downloads        = false
   vulnerability_alerts = true
 
   #  allow_auto_merge            = false

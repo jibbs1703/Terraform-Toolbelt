@@ -29,8 +29,11 @@ jobs:
 
     - name: Terraform Format
       id: fmt
+      run: terraform fmt
+
+    - name: Terraform Format Check
+      id: fmt-check
       run: terraform fmt -check
-      continue-on-error: true
 
     - name: Terraform Init
       id: init
@@ -45,10 +48,10 @@ jobs:
       if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/')
       run: terraform plan -no-color -input=false
       env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        TF_VAR_github_token: ${{ secrets.TOKEN_GITHUB }}
 
     - name: Terraform Apply
       if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
       run: terraform apply -auto-approve -input=false
       env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        TF_VAR_github_token: ${{ secrets.TOKEN_GITHUB }}
