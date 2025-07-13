@@ -1,17 +1,24 @@
-provider "github" {
-  token = var.github_token
-}
-
 resource "github_repository" "repo" {
   name        = var.repo_name
   description = var.repo_description
-  visibility  = var.repo_visibility
-  auto_init   = true
+  visibility  = var.visibility
+
+  auto_init          = true
+  gitignore_template = "Terraform"
+  
+  # Repository settings
+  has_issues    = true
+  has_projects  = false
+  has_wiki      = false
+  has_downloads = false
+  
+  # Security settings
+  vulnerability_alerts = true
 }
 
 resource "github_repository_collaborator" "collaborators" {
-  for_each   = toset(var.collaborators)
+  for_each   = var.collaborators
   repository = github_repository.repo.name
-  username   = each.value
-  permission = var.collaborator_permission
+  username   = each.key
+  permission = each.value.permission
 }

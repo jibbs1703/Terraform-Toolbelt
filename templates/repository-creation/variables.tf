@@ -15,20 +15,20 @@ variable "repo_description" {
   default     = ""
 }
 
-variable "repo_visibility" {
-  description = "Visibility of the repository (public, private, internal)"
+variable "visibility" {
+  description = "Repository visibility"
   type        = string
   default     = "public"
+  validation {
+    condition     = contains(["public", "private"], var.visibility)
+    error_message = "Visibility must be either 'public' or 'private'"
+  }
 }
 
 variable "collaborators" {
-  description = "List of GitHub usernames to add as collaborators"
-  type        = list(string)
-  default     = []
-}
-
-variable "collaborator_permission" {
-  description = "Permission level for collaborators (pull, push, admin)"
-  type        = string
-  default     = "push"
+  description = "List of collaborators with their permissions"
+  type = map(object({
+    permission = string
+  }))
+  default = {}
 }
